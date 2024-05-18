@@ -69,4 +69,49 @@ At 'the End, inside `<Body>` Tag'. If there is an error with Your javaScript fil
     console.log(`Your Grade is ${grade}`); // returns 'C'
     ```
 
+5. Variations of `for` loop
+    ```js
+    // variations of for loop
+    let food = ["Potato", "Tomato", "Brinjal"];
+
+    for(let obj of food){       // 'of' in a For Loop, fetches the value
+        console.log('food '+obj);
+    }
+
+    for(let index in food){     // 'in' in a For Loop, fetches the index
+        console.log('food '+index);
+    }
+    ```
+
+6. Spread operator, `...ArrayName` allows an iterable such as array or string to be expaded or seprated into single elements. (Unpacks elements).
+    ```js
+    let number = [1,2,3,4,5];
+    console.log(Math.max(number)); // returns NaN, as Math.max() accepts only numbers
+    console.log(Math.max(...number)); // returns 5
+
+    let vegitable = ["Potato", "Tomato", "Brinjal"];
+    let food = [...fruits, ...vegitable, 'rice', 'fish'];
+    console.log(food);
+
+    ```
+7. Rest Parameters, `...ArrayName` Bundels number of arguments in as a function parameter, (**Methord Over loading**).
+    ```js
+    function Menu(...foods){
+    console.log(foods); // prints array, containing "Pasta", "Burger", "Pizza"
+    } 
+
+    const food1 = "Pasta";
+    const food2 = "Burger";
+    const food3 = "Pizza";
+    Menu(food1, food2, food3);
+    ```
+
+8. We and Use HTML elements in javaScript, eg.
+    ```js
+    // Program to store images in an Array
+    const images = []
     
+    for(let i = 0; i<5; i++){
+        images.push(`<img src="./image_paths/${name}.png" alt="img ${name}">`)
+    }
+    ```

@@ -206,6 +206,27 @@ for(let i=0;i<5;i++){
     console.log(i);
 }
 
+// variations of for loop
+let food = ["Potato", "Tomato", "Brinjal"];
+
+for(let obj of food){       // 'of' in a For Loop, fetches the value
+    console.log('food '+obj);
+}
+
+for(let count in food){     // 'in' in a For Loop, fetches the index
+    console.log('food '+count);
+}
+
+
+
+// do while loop
+let j = 0;
+
+do{
+    console.log(j);
+    j++;
+}while(j<5);
+
 // check if it's a number , NaN
 if (!isNaN(pi)){
     console.log('Not a Number');

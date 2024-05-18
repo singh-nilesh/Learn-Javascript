@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Temperature converter</title>
+    <style>
+        #card1{
+            text-align: center;
+            width: 300px;
+            height: 320px;
+            border: 3px solid black;
+            border-radius: 20px;
+            margin: 100px auto;
+            box-shadow: 5px 5px 10px gray ; 
+        }
+        #entry{
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+            margin: 0px 10px 10px 20px;
+            text-align: center;
+            font: 20px bold;
+        }
+        #btnSubmit{
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            font-size: large;
+        }
+        label{
+            margin: 0 15px;
+            font-size: 1.5em;
+        }
+        #result{
+            font-size: 1.5em;
+            margin: 1px;
+            color: brown;
+        }
+
+
+        #diceRoll{
+            text-align: center;
+            width: 500px;
+            height: auto;
+            border: 3px solid black;
+            border-radius: 20px;
+            margin: 50px auto;
+        }
+
+        #Dice_roll_result{
+            font-size: 1.5em;
+            margin: 1px;
+            color: brown;
+        }
+
+        #diceCount{
+            width: 100px;
+            height: 30px;
+            margin: 0px 10px 10px 20px;
+            text-align: center;
+            font: 20px bold;
+        }
+        #btnRoll{
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            font-size: large;
+        }
+
+        #diceImgs img{
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="card1">
+        <h1 id="head"> Temperature Converter</h1>
+        <input type="number" id="entry"> <br>
+                
+        <input type="radio" name="temp" checked="true">
+        <label for="Fahrenheit">Celcius -> Fahrenheit</label><br>
+
+        <input type="radio" name="temp">
+        <label for="Celcius">Fahrenheit -> Celcius</label><br>
+
+        <input type="button" value="Convert" id="btnSubmit">
+        <p id="result"> Select a conversion</p>
+    </form>
+    <br> <hr width="80%">
+
+
+    <div id="diceRoll">
+        <h1>Dice Roll</h1>
+        
+        <label for="diceCount">Enter number of dice to roll</label><br>
+        <input type="number" id="diceCount" min="1" max="6">
+        
+        <button id="btnRoll" onclick="rollDice()">Roll</button><br>
+        
+        <h3 id="Dice_roll_result"> Enter the Dice count and Roll!!! </h3><br>
+        <div id="diceImgs"></div>
+        
+    </div>
+
+    <script>
+
+// Functions in JavaScript
+function add(num1, num2){
+    return num1 + num2;
+}
+console.log(add(10,20)); // returns 30
+
+// Anonymous Function
+let add1 = function(num1, num2){
+    return num1 + num2;
+}
+console.log(add1(10,20)); // returns 30
+
+// Arrow Function
+let add2 = (num1, num2) => num1 + num2;
+console.log(add2(10,20)); // returns 30
+
+// Self Invoking Function
+(function(num1, num2){
+    console.log(num1 + num2);
+})(5,20);
+
+
+
+// Variable Sclope.
+let x = 5;  // Global Scope, everyone can access
+
+function test1(){
+    let y = 10; // local Scope, only for test1()
+    console.log(`x = ${x}`);
+    console.log(`y = ${y}`);
+    // console.log(`z = ${z}`);   --> Throws ReferenceError
+}
+test1();
+
+function test2(){
+    let z = 20; // local Scope, only for test2()
+    console.log(`z = ${z}`);
+    console.log(`x = ${x}`);
+    // console.log(`y = ${y}`); --> Throws ReferenceError
+}
+test2();
+
+
+// temperature converter
+var unit = document.getElementsByName("temp");
+var entry = document.getElementById("entry");
+var result = document.getElementById("result");
+var btnSubmit = document.getElementById("btnSubmit");
+btnSubmit.onclick = function(){
+    if(unit[0].checked){
+        result.textContent = Math.round((parseInt(entry.value) * 9/5) + 32);
+    }
+    else if(unit[1].checked){
+        result.textContent = Math.round((parseInt(entry.value) - 32) * 5/9);
+    }
+}
+
+
+// Array in JavaScript
+let fruits = ["Apple", "Banana", "Mango"];
+console.log(fruits);
+
+fruits.unshift("mango"); // add element at the start
+console.log(fruits);
+
+fruits.pop(); // remove last element
+console.log(fruits);
+
+fruits.push("Orange"); // add element at the end
+console.log(fruits);
+
+let index = fruits.indexOf("Banana"); // returns index of element
+console.log(index);
+
+let index1 = fruits.indexOf("grapes"); // returns index of element
+console.log(index1); // returns -1 if not found
+
+// Using a for loop
+for(let i=1; i<fruits.length; i++){
+    console.log(fruits[i]);
+}
+
+
+// Spread operator
+let number = [1,2,3,4,5];
+console.log(Math.max(number)); // returns NaN, as Math.max() accepts only numbers
+console.log(Math.max(...number)); // returns 5
+
+let vegitable = ["Potato", "Tomato", "Brinjal"];
+let food = [...fruits, ...vegitable, 'rice', 'fish'];
+console.log(food);
+
+//Rest parameters
+function Menu(...foods){
+    console.log(foods); // prints array, containing "Pasta", "Burger", "Pizza"
+} 
+
+const food1 = "Pasta";
+const food2 = "Burger";
+const food3 = "Pizza";
+Menu(food1, food2, food3);
+
+const fullName = combineStrings("Monkey", "D","Luffy");
+
+function combineStrings(...str){
+    return str.join(" ");
+}
+console.log(fullName);
+
+
+
+
+// Dice Roll program
+let diceCount = document.getElementById("diceCount");
+let diceImgs = document.getElementById("diceImgs");
+let diceResults = document.getElementById("Dice_roll_result");
+
+function rollDice(){
+    let Imgs = [];
+    let diceResult_list = [];
+    Count = parseInt(diceCount.value);
+
+    for(let i=0; i<Count; i++){
+
+        let randomNum = Math.floor(Math.random() * 6) + 1;
+        diceResult_list.push(randomNum);
+        Imgs.push(`<img src="./dice_imgs/${randomNum}.png" alt="img ${randomNum}">`);
+    }
+    diceResults.innerHTML = diceResult_list.join(", ");
+    diceImgs.innerHTML = Imgs.join(" "); 
+}
+   
+
+// Randome Password generator
+
+</script>
+</body>
+</html>
