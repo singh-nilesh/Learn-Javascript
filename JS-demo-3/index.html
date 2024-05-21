@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>JavaScript tutorial</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1 id="heading"></h1>
+    <p id="para"></p>
+
+
+    
+    
+    <script>
+
+// Callback Functions --> It is used to manage asynchronous code.
+/*
+// Without callback function
+function greetDay(){
+    setTimeout(function(){
+        console.log("Good Morning");
+    }, 3000);
+}
+
+function greetNight(){
+    console.log("Good Night");
+}
+
+greetDay();
+greetNight(); // there is a delay in execution, Night is greeted before day
+
+// With callback function
+
+function greetDay2(Callback){
+    setTimeout(function(){
+        console.log("Good Morning");
+        Callback();
+    }, 3000);
+}
+
+function greetNight2(){
+    console.log("Good Night");
+}
+
+greetDay2(greetNight2); // day is greeted after night
+
+sum(display, 10, 20);
+function sum(Callback, x ,y){
+    let sum = x + y;
+    Callback(sum);
+}
+*/
+function display(num){
+    document.getElementById("heading").innerHTML = num;
+}
+
+
+// forEach() --> method used to iterate over an array
+let arr = [10,20,30];
+
+// In this example, original array is not changed
+function double(num){
+    let x = num ** 2;
+    console.log(x);
+}
+arr.forEach(double);
+console.log(arr);
+
+
+// In this example, original array is changed, 
+// Element, index and array are passed as parameters by default
+function double2(element, index, array){
+    array[index] = element ** 2; // This line changes the original array elements
+    console.log(array[index]);
+}
+arr.forEach(double2); // No need to pass any parameters, during function call
+console.log(arr);
+
+
+// arr.map() --> Similar to forEach(), but returns a new array
+const number = [1, 2, 3, 4, 5];
+const squares = number.map(sqr);
+console.log(squares);
+
+function sqr(element){
+    return element**2;
+}
+
+// This example re formats dates
+const date = ['2024-1-14', '2024-1-15', '2024-1-16'];
+const reformatted = date.map(reformat);
+console.log(reformatted);
+
+function reformat(element){
+    let [year, month, day] = element.split('-');
+    return `${day}-${month}-${year}`
+}
+
+
+//  arr.filter() --> creats a new array with filtered elements
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const primes = numbers.filter(isPrime);
+console.log(primes);
+
+function isPrime(element){
+
+    if(element < 2 ) return false;
+    let flag = true;
+
+    for(let i = 2; i < (element/2+1); i++){
+        if(element % i === 0){
+            flag = false;
+            break;
+        }
+    }
+    if(flag) return element;
+}
+
+
+
+// arr.reduce() --> reduces an array to a single value
+const numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let sum = numbers2.reduce(add);
+console.log(sum);   // returns 55
+
+function add(previous, current){
+    return previous + current;
+}
+
+// this example returns max
+let maxNum = numbers2.reduce(max);
+console.log(maxNum); // returns 10
+
+function max(previous, current){
+    return previous > current ? previous : current;
+}
+
+
+// functon expression (ananonymous function) ,
+// --> used in calbacks, higher-order function, Closure, Event Listener
+/*
+let hello = function(){
+    console.log("Hello");
+}
+setTimeout(hello, 3000);
+
+
+setTimeout(function(){
+    console.log("Hello");
+}, 3000);
+*/
+
+const cubes = numbers2.map(function(num){
+    return num ** 3;
+});
+console.log(cubes);
+    
+
+// Arrow functions --> similar to function expression, 
+
+// can't pass arguments in arrow functions, if used as callback direcly, witout declaration
+// setTimeout(("jhon",34) => {   --> trows Missing formal parameters error
+setTimeout(() => {      
+    console.log(`Hello jhon.`);
+    console.log(`you are 34 year old`);
+},500);
+
+//  Or
+const sayHello = (name, age) => {console.log(`Hello ${name}.`)
+        console.log(`you are ${age} year old`)};
+
+// setTimeout(sayHello('rj',34), 2000);  --> won't work
+setTimeout(() => sayHello("aj",32), 500);
+
+// Eg.
+let odds = numbers.filter(num => num % 2 !== 0);
+console.log(odds);
+
+    </script>
+</body>
+</html>

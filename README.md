@@ -115,3 +115,31 @@ At 'the End, inside `<Body>` Tag'. If there is an error with Your javaScript fil
         images.push(`<img src="./image_paths/${name}.png" alt="img ${name}">`)
     }
     ```
+
+9. `arr.map()` accept a callback and applies the function to each element of an array, **returns a new array**.
+    ```js
+    const number = [1, 2, 3, 4, 5];
+    const squares = number.map(sqr);
+    console.log(squares);
+
+    function sqr(element){
+        return element**2;
+    }
+    ```
+10. **Arrow functions** `variable (parameter) => function_code` , are a concise way to write a simple explession functons, the you use only once
+    ```js
+    // can't pass arguments in arrow functions, if used as callback direcly, witout declaration
+    
+    // setTimeout(("jhon",34) => {   --> trows Missing formal parameters error
+    setTimeout(() => {      
+        console.log(`Hello jhon.`);
+        console.log(`you are 34 year old`);
+    },3000);
+
+    //  Or
+    const sayHello = (name, age) => {console.log(`Hello ${name}.`)
+            console.log(`you are ${age} year old`)};
+
+    // setTimeout(sayHello('rj',34), 2000);  --> won't work
+    setTimeout(() => sayHello("aj",32), 3000);    
+    ```
