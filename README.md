@@ -126,6 +126,7 @@ At 'the End, inside `<Body>` Tag'. If there is an error with Your javaScript fil
         return element**2;
     }
     ```
+
 10. **Arrow functions** `variable (parameter) => function_code` , are a concise way to write a simple explession functons, the you use only once
     ```js
     // can't pass arguments in arrow functions, if used as callback direcly, witout declaration
@@ -143,3 +144,23 @@ At 'the End, inside `<Body>` Tag'. If there is an error with Your javaScript fil
     // setTimeout(sayHello('rj',34), 2000);  --> won't work
     setTimeout(() => sayHello("aj",32), 3000);    
     ```
+
+11. **Objects** in javaScript, are a collection or properties and/or methords, that can represent real world person, things, etc.
+- `this.` is a Key word that is used to reference the methords and attribute of Object in which it is being uesd in.
+- **`this.` can't be used in an arrow function (for methords), <br> using `this` keyword in an arrow function will refer to window Object and not to Current Object.**
+    ```js
+    const student = {
+        Name: "Jhon",
+        age: 20,
+        isEmployed: false,
+        into: function(){
+            console.log(`hello i am ${this.Name}`);
+            console.log('I am ' + this.age + ' years old');
+        },
+        study: () => console.log("Currently I am in college."),
+    }
+    console.log(student.Name);
+    student.study();
+    ```
+
+12. `console.log(this);` returns a Window object, <br> The window object in JavaScript is a global object that represents the browser's window or frame containing a DOM document. It serves as the global context for client-side JavaScript code execution, meaning all global variables and functions are properties and methods of the window object.

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>JavaScript tutorial</title>
+</head>
+<body>
+    
+    <script>
+
+// Objects & Classes, using `this` keyword
+const student = {
+    // Properties
+    Name: "Jhon",
+    age: 20,
+    isEmployed: false,
+    friends: ["Tom", "Sam", "Bob"],
+
+    // Methods
+    into: function(){
+        console.log(`hello i am ${this.Name}`);
+        console.log('I am ' + this.age + ' years old');
+    },
+    study: () => console.log("Currently, I am in college."),
+}
+console.log(student.Name);
+student.study();
+
+    
+    
+    </script>
+</body>
+</html>
